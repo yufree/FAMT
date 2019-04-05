@@ -82,11 +82,14 @@ if (diagnostic.plot) {
 if (which.min(sdt)==1) opt = 0
 if (which.min(sdt)>1) { 
    jumps = -diff(sdt)/sdt[-length(sdt)]
-   if(sum(jumps>0.05)==0){
+   if(sum(jumps>0.05)==0)
+   {
                                 opt = 0
-                        }else{
-                                opt = max((1:maxnbfactors)[jumps>0.05]) }
-                        } 
-            }
+                        }
+       else
+       {
+                                opt = max((1:maxnbfactors)[jumps>0.05]) 
+   }
+}
 list(criterion=sdt,optimalnbfactors=opt)
 }
